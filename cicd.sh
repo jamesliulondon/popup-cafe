@@ -33,6 +33,8 @@ docker run \
 	-d -p ${ARTIFACTORY_PORT}:8081 \
 	-v ${ARTIFACTORY_ROOT}:/var/opt/jfrog/artifactory \
 	--name ${ARTIFACTORY_TAG} docker.bintray.io/jfrog/artifactory-oss
+# PAUSE ARTICATORY
+docker stop ${ARTIFACTORY_TAG}
 	
 #LAUNCH GITLAB
 docker pull gitlab/gitlab-ce
@@ -46,7 +48,7 @@ docker run \
 
 
 echo "PAUSING"
-sleep 60 
+sleep 300 
 echo "BEGIN CONFIGURATION"
 # SETUP GIT
 docker cp reset_git.sh ${GIT_TAG}:/root
